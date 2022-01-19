@@ -1,6 +1,6 @@
 import numpy as np
 from lib.config import cfg
-from skimage.measure import compare_ssim
+from skimage.metrics import structural_similarity
 import os
 import cv2
 from termcolor import colored
@@ -53,7 +53,7 @@ class Evaluator:
         img_pred = orig_img_pred[y:y + h, x:x + w]
         img_gt = orig_img_gt[y:y + h, x:x + w]
         # compute the ssim
-        ssim = compare_ssim(img_pred, img_gt, multichannel=True)
+        ssim = structural_similarity(img_pred, img_gt, multichannel=True)
 
         return ssim
 
